@@ -1,0 +1,117 @@
+<div class="header bg-gradient-danger pb-8 pt-5 pt-md-8">
+    <div class="container-fluid">
+    </div>
+</div>
+<!-- Page content -->
+<div class="container-fluid mt--7">
+    <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+        <!-- Table -->
+        <div class="row">
+            <div class="col">
+                <div class="card shadow">
+                    <div class="card-header bg-transparent">
+                        <h3 class="mb-0">User Registration</h3>
+                    </div>
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-md-6" style="display: none;">
+                                <div class="form-group">
+                                    <label>user id</label>
+                                    <input type="text" formControlName="id" class="form-control" />
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label class="label">User name<span class="required-field">*</span></label>
+                                    <input type="text" placeholder="User name" formControlName="username" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.username.errors }" />
+                                    <div *ngIf="submitted && f.username.errors" class="invalid-feedback">
+                                        <div *ngIf="f.username.errors.required"> User name is required</div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label class="label">Password<span class="required-field">*</span></label>
+                                    <input type="password" placeholder="Password" formControlName="password" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.password.errors }" />
+                                    <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
+                                        <div *ngIf="f.password.errors.required">Password is required</div>
+                                    </div>
+                                </div>
+                            </div>
+
+
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label class="label">Member Id<span class="required-field">*</span></label>
+                                    <input type="text" placeholder="Member Id" formControlName="memberId" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.memberId.errors }" />
+                                    <div *ngIf="submitted && f.memberId.errors" class="invalid-feedback">
+                                        <div *ngIf="f.memberId.errors.required">MemberId is required</div>
+                                    </div>
+                                </div>
+                            </div>
+
+
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label class="label">Groups<span class="required-field">*</span></label>
+                                    <select formControlName="groups" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.groups.errors }">
+          
+                                    <option value="group A">Group A</option>
+                                    <option value="group B" >Group B</option>
+                                        <!-- <option *ngFor=" let sl of BindUserRoles" [value]="sl.role_id">{{sl.type}}</option>  -->
+
+                               </select>
+                                    <div *ngIf="submitted && f.groups.errors" class="invalid-feedback">
+                                        <div *ngIf="f.groups.errors.required">Groups is required</div>
+                                    </div>
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label class="label">Role<span class="required-field">*</span></label>
+                                    <select formControlName="role" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.role.errors }">
+          
+                                    <option value="Admin">Admin</option>
+                                    <option value="User" >User</option>
+                                        <!-- <option *ngFor=" let sl of BindUserRoles" [value]="sl.role_id">{{sl.type}}</option>  -->
+
+                               </select>
+                                    <div *ngIf="submitted && f.role.errors" class="invalid-feedback">
+                                        <div *ngIf="f.role.errors.required">Role is required</div>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+
+
+
+                        <div class="row">
+                            <div class="col-md-6" style="text-align: right;">
+                                <button type="submit" class="btn btn-default">{{BtnText}}</button>
+                            </div>
+                            <div class="col-md-6">
+                                <button type="button" class="btn btn-primary" (click)="ClearFields()">Cancel</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+    <br>
+
+
+
+</div>

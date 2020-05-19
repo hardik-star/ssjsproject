@@ -1,0 +1,74 @@
+<div class="header bg-gradient-danger pb-8 pt-5 pt-md-8">
+    <div class="container-fluid">
+    </div>
+</div>
+<!-- Page content -->
+<div class="container-fluid mt--7">
+
+    <div class="row">
+        <div class="col">
+            <div class="card shadow">
+                <div class="row" style="padding-top: 3%;padding-left: 3%;padding-right: 3%;">
+
+
+                    <div class="col-md-6">
+                        <h3 class="mb-0">Entity Data</h3>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="search-hero">
+                            <input class="form-control" type="text" name="search" [(ngModel)]="searchText" autocomplete="off" placeholder="&#61442;  Start searching ">
+                        </div>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <div class="card shadow">
+                        <div class="table-responsive">
+                            <table class="table align-items-center table-flush">
+                                <thead class="thead-light">
+                                    <tr>
+                                        <th scope="col">name</th>
+                                        <th scope="col">code</th>
+                                        <th scope="col">address</th>
+                                        <th scope="col">phone no</th>
+
+
+                                        <th scope="col" style="text-align: center;">Action</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr *ngFor="let sl of bindentitydata | filter:searchText">
+
+
+                                        <th scope="col">{{sl.name}}</th>
+                                        <th scope="col">{{sl.code}}</th>
+                                        <th scope="col">{{sl.address}}</th>
+
+                                        <th scope="col">{{sl.phone_no}}</th>
+                                        <th scope="col" style="display: none;">{{sl.registration_no}}</th>
+
+                                        <th scope="col" style="display: none;">{{sl.id}}</th>
+
+                                        <th scope="col" style="display: none;">{{sl.alt_phone_no}}</th>
+
+                                        <td class="text-center">
+                                            <a style="cursor: pointer;" (click)="Edit(sl)">
+                                                <img src="../../../assets/img/edit.png" alt="Edit"></a> |
+                                            <a style="cursor: pointer;" (click)="deleteentity(sl)">
+                                                <img src="../../../assets/img/delete.png" alt="Remove">
+                                            </a>
+                                        </td>
+                                    </tr>
+                                    <tr *ngIf="isDataEmpty">
+                                        <td colspan="5" style="text-align: center;font-weight: bold;">No Data Found</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+</div>

@@ -1,0 +1,243 @@
+<div class="header bg-gradient-danger pb-8 pt-5 pt-md-8">
+    <div class="container-fluid">
+    </div>
+</div>
+<!-- Page content -->
+<div class="container-fluid mt--7">
+    <form [formGroup]="memberForm" (ngSubmit)="onSubmit()">
+        <!-- Table -->
+        <div class="row">
+            <div class="col">
+                <div class="card shadow">
+                    <div class="card-header bg-transparent">
+                        <h3 class="mb-0">Member</h3>
+                    </div>
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-md-6" style="display: none;">
+                                <div class="form-group">
+                                    <label>user id</label>
+                                    <input type="text" formControlName="id" class="form-control" />
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label class="label">Code<span class="required-field">*</span></label>
+                                    <input type="text" placeholder="Code" formControlName="code" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.code.errors }" />
+                                    <div *ngIf="submitted && f.code.errors" class="invalid-feedback">
+                                        <div *ngIf="f.code.errors.required">Code is required</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label class="label">First Name<span class="required-field">*</span></label>
+                                    <input type="text" placeholder="First Name" formControlName="f_name" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.f_name.errors }" alphabetsOnly/>
+                                    <div *ngIf="submitted && f.f_name.errors" class="invalid-feedback">
+                                        <div *ngIf="f.f_name.errors.required"> First Name is required</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label class="label">Middle Name<span class="required-field">*</span></label>
+                                    <input type="text" placeholder="Middle Name" formControlName="m_name" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.m_name.errors }" alphabetsOnly />
+                                    <div *ngIf="submitted && f.m_name.errors" class="invalid-feedback">
+                                        <div *ngIf="f.m_name.errors.required"> Middle Name is required</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label class="label">Last Name<span class="required-field">*</span></label>
+                                    <input type="text" placeholder="Last Name" formControlName="l_name" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.l_name.errors }" alphabetsOnly />
+                                    <div *ngIf="submitted && f.l_name.errors" class="invalid-feedback">
+                                        <div *ngIf="f.l_name.errors.required"> Last Name is required</div>
+                                    </div>
+                                </div>
+                            </div>
+
+
+
+
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label class="label">Date of Birth<span class="required-field">*</span></label>
+                                    <input type="date" placeholder="Date of Birth" formControlName="dob" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.dob.errors }" />
+                                    <div *ngIf="submitted && f.dob.errors" class="invalid-feedback">
+                                        <div *ngIf="f.dob.errors.required"> Date of Birth is required</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label class="label">Blood Group<span class="required-field">*</span></label>
+                                    <select formControlName="blood_group" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.blood_group.errors }">
+        
+                                  <option value="A+">A+</option>
+                                  <option value="A-" >A-</option>
+                                  <option value="B+" >B+</option>
+                                  <option value="B-" >B-</option>
+                                  <option value="o+" >o+</option>
+                                  <option value="o-" >o-</option>
+                                  <option value="AB+" >AB+</option>
+                                  <option value="AB-" >AB-</option>
+                                      <!-- <option *ngFor=" let sl of BindUserRoles" [value]="sl.role_id">{{sl.type}}</option>  -->
+
+                             </select>
+                                    <div *ngIf="submitted && f.blood_group.errors" class="invalid-feedback">
+                                        <div *ngIf="f.blood_group.errors.required">Blood Group is required</div>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+
+
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label class="label">Pancard No<span class="required-field">*</span></label>
+                                    <input type="text" placeholder="Pancard Number" maxlength="10" formControlName="pancard_no" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.pancard_no.errors }" />
+                                    <div *ngIf="submitted && f.pancard_no.errors" class="invalid-feedback">
+                                        <div *ngIf="f.pancard_no.errors.required"> Pancard No is required</div>
+                                        <div *ngIf="f.pancard_no.errors.minlength">Invalid Pancard No!</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label class="label">Votingcard No<span class="required-field">*</span></label>
+                                    <input type="text" placeholder="Votingcard Number" maxlength="12" formControlName="votingcard_no" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.votingcard_no.errors }" numbersOnly />
+                                    <div *ngIf="submitted && f.votingcard_no.errors" class="invalid-feedback">
+                                        <div *ngIf="f.votingcard_no.errors.required"> Votingcard No is required </div>
+                                        <div *ngIf="f.votingcard_no.errors.minlength">Invalid Votingcard No!</div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label class="label">Aadhaar No<span class="required-field">*</span></label>
+                                    <input type="text" placeholder="Aadhaar No" maxlength="12" formControlName="aadharcard_no" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.aadharcard_no.errors }" numbersOnly />
+                                    <div *ngIf="submitted && f.aadharcard_no.errors" class="invalid-feedback">
+                                        <div *ngIf="f.aadharcard_no.errors.minlength">Invalid Adhaar No!</div>
+                                        <div *ngIf="f.aadharcard_no.errors.required">Adhaar No is required</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label class="label">Is head of fimily<span class="required-field">*</span></label>
+                                    <input type="text" placeholder="Is head of fimily" formControlName="is_head_of_fimily" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.is_head_of_fimily.errors }" numbersOnly/>
+                                    <div *ngIf="submitted && f.is_head_of_fimily.errors" class="invalid-feedback">
+                                        <div *ngIf="f.is_head_of_fimily.errors.required"> Is head of fimily is required</div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label class="label">HOF Id<span class="required-field">*</span></label>
+                                    <input type="text" placeholder="HOF Id" formControlName="HOF_id" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.HOF_id.errors }" numbersOnly/>
+                                    <div *ngIf="submitted && f.HOF_id.errors" class="invalid-feedback">
+                                        <div *ngIf="f.HOF_id.errors.required"> HOF Id is required</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label class="label">  HOF Name<span class="required-field">*</span></label>
+                                    <input type="text" placeholder="HOF Name" formControlName="HOF_name" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.HOF_name.errors }" alphabetsOnly/>
+                                    <div *ngIf="submitted && f.HOF_name.errors" class="invalid-feedback">
+                                        <div *ngIf="f.  HOF_name.errors.required"> HOF Name is required</div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="row">
+
+                            <!-- <div class="form-group">
+                                    <label class="label"><span class="required-field">*</span></label>
+                                    <input type="text" placeholder="HOF Relation" formControlName="HOF_relation" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.HOF_relation.errors }" alphabetsOnly/>
+                                    <div *ngIf="submitted && f.HOF_relation.errors" class="invalid-feedback">
+                                        <div *ngIf="f.HOF_relation.errors.required">HOF Relation is required</div>
+                                    </div>
+                                </div> -->
+
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label class="label">HOF Relation<span class="required-field">*</span></label>
+                                    <select formControlName="HOF_relation" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.HOF_relation.errors }">
+            
+                                      <option value="Brother">Brother</option>
+                                      <option value="Sister" >Sister</option>
+                                      <option value="Mother" >Mother</option>
+                                      <option value="Father" >Father</option>
+                                      <option value="Uncle" >Uncle</option>
+                                      <option value="Aunt" >Aunt</option>
+                                      <option value="Cousin" >	Cousin</option>
+                                      <option value="Grandmother" >	Grandmother</option>
+                                      <option value="Grandfather" >	Grandfather</option>
+                                          <!-- <option *ngFor=" let sl of BindUserRoles" [value]="sl.role_id">{{sl.type}}</option>  -->
+    
+                                 </select>
+                                    <div *ngIf="submitted && f.HOF_relation.errors" class="invalid-feedback">
+                                        <div *ngIf="f.HOF_relation.errors.required">HOF Relation is required</div>
+                                    </div>
+                                </div>
+
+
+                            </div>
+
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label class="label">Isalive<span class="required-field">*</span></label>
+                                    <select formControlName="isalive" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.isalive.errors }">
+    
+                              <option value="yes">Yes</option>
+                              <option value="no" >no</option>
+                              
+                                  <!-- <option *ngFor=" let sl of BindUserRoles" [value]="sl.role_id">{{sl.type}}</option>  -->
+
+                         </select>
+                                    <div *ngIf="submitted && f.isalive.errors" class="invalid-feedback">
+                                        <div *ngIf="f.isalive.errors.required">Isalive is required</div>
+                                    </div>
+                                </div>
+
+                            </div>
+
+                        </div>
+
+
+
+                        <div class="row">
+                            <div class="col-md-6" style="text-align: right;">
+                                <button type="submit" class="btn btn-default">{{BtnText}}</button>
+                            </div>
+                            <div class="col-md-6">
+                                <button type="button" class="btn btn-primary" (click)="ClearFields()">Cancel</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+    <br>

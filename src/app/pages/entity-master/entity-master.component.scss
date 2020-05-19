@@ -1,0 +1,22 @@
+@media (min-width: 768px) {
+    .pt-md-8,
+    .py-md-8 {
+        padding-top: 5rem !important;
+    }
+}
+
+.form-control {
+    // height: calc(2.3rem + 2px) !important;
+    height: calc(2rem + 10px) !important;
+}
+
+.label {
+    display: inline-block;
+    margin-bottom: 0.5rem;
+    font-weight: 600 !important;
+}
+
+.required-field {
+    font-size: 14px;
+    color: red;
+}

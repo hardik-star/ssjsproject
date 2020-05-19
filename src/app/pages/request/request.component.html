@@ -1,0 +1,300 @@
+<div class="header bg-gradient-danger pb-8 pt-5 pt-md-8">
+    <div class="container-fluid">
+    </div>
+</div>
+<!-- Page content -->
+<div class="container-fluid mt--7">
+    <form [formGroup]="request" (ngSubmit)="onSubmit()">
+        <!-- Table -->
+        <div class="row">
+            <div class="col">
+                <div class="card shadow">
+                    <div class="card-header bg-transparent">
+                        <h3 class="mb-0">User Registration</h3>
+                    </div>
+                    <div class="card-body">
+                        <div class="row">
+
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label class="label">Entity<span class="required-field">*</span></label>
+                                    <select formControlName="Entity" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.Entity.errors }">
+                              <option [ngValue]="null" disabled="true">--Select--</option>
+                                  <option *ngFor=" let sl of BindUserRoles" [value]="sl.Entity">{{sl.type}}</option>
+
+                         </select>
+                                    <div *ngIf="submitted && f.Entity.errors" class="invalid-feedback">
+                                        <div *ngIf="f.Entity.errors.required">Entity is required</div>
+                                    </div>
+                                </div>
+
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label class="label">LOB<span class="required-field">*</span></label>
+                                    <select formControlName="LOB" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.LOB.errors }">
+                            <option [ngValue]="null" disabled="true">--Select--</option>
+                                <option *ngFor=" let sl of BindUserRoles" [value]="sl.LOB">{{sl.type}}</option>
+
+                       </select>
+                                    <div *ngIf="submitted && f.LOB.errors" class="invalid-feedback">
+                                        <div *ngIf="f.LOB.errors.required">LOB is required</div>
+                                    </div>
+                                </div>
+
+                            </div>
+
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label class="label">Sub-Lob<span class="required-field">*</span></label>
+                                    <select formControlName="sublob" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.sublob.errors }">
+                              <option [ngValue]="null" disabled="true">--Select--</option>
+                                  <option *ngFor=" let sl of BindUserRoles" [value]="sl.role_id">{{sl.type}}</option>
+
+                         </select>
+                                    <div *ngIf="submitted && f.sublob.errors" class="invalid-feedback">
+                                        <div *ngIf="f.sublob.errors.required">Sub-Lob is required</div>
+                                    </div>
+                                </div>
+
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label class="label">Inventory Type<span class="required-field">*</span></label>
+                                    <select formControlName="InventoryType" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.InventoryType.errors }">
+                                  <option [ngValue]="null" disabled="true">--Select--</option>
+                                      <option *ngFor=" let sl of BindUserRoles" [value]="sl.role_id">{{sl.type}}</option>
+
+                             </select>
+                                    <div *ngIf="submitted && f.InventoryType.errors" class="invalid-feedback">
+                                        <div *ngIf="f.InventoryType.errors.required">Role is required</div>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label class="label">Digital Inventory Name<span class="required-field">*</span></label>
+                                    <select formControlName="DigitalInventory" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.DigitalInventory.errors }">
+                            <option [ngValue]="null" disabled="true">--Select--</option>
+                                <option *ngFor=" let sl of BindUserRoles" [value]="sl.role_id">{{sl.type}}</option>
+
+                       </select>
+                                    <div *ngIf="submitted && f.DigitalInventory.errors" class="invalid-feedback">
+                                        <div *ngIf="f.DigitalInventory.errors.required">Role is required</div>
+                                    </div>
+                                </div>
+
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label class="label">Name/IP details  <span class="required-field">*</span></label>
+                                    <select formControlName="IPdetails" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.IPdetails.errors }">
+                            <option [ngValue]="null" disabled="true">--Select--</option>
+                                <option *ngFor=" let sl of BindUserRoles" [value]="sl.role_id">{{sl.type}}</option>
+
+                       </select>
+                                    <div *ngIf="submitted && f.IPdetails.errors" class="invalid-feedback">
+                                        <div *ngIf="f.IPdetails.errors.required">Name/IP details is required</div>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label class="label">Purpose<span class="required-field">*</span></label>
+                                    <select formControlName="Purpose" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.Purpose.errors }">
+                            <option [ngValue]="null" disabled="true">--Select--</option>
+                                <option *ngFor=" let sl of BindUserRoles" [value]="sl.Purpose">{{sl.type}}</option>
+
+                       </select>
+                                    <div *ngIf="submitted && f.Purpose.errors" class="invalid-feedback">
+                                        <div *ngIf="f.Purpose.errors.required">Role is required</div>
+                                    </div>
+                                </div>
+
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label class="label">Vendor/ Supplier Name <span class="required-field">*</span></label>
+                                    <select formControlName="Vendor" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.Vendor.errors }">
+                            <option [ngValue]="null" disabled="true">--Select--</option>
+                                <option *ngFor=" let sl of BindUserRoles" [value]="sl.role_id">{{sl.type}}</option>
+
+                       </select>
+                                    <div *ngIf="submitted && f.Vendor.errors" class="invalid-feedback">
+                                        <div *ngIf="f.Vendor.errors.required">Vendor is required</div>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                        <div class="row">
+
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label class="label">From Date </label>
+                                    <input type="date" formControlName="FromDate" class="form-control" />
+
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label class="label">To Date </label>
+                                    <input type="date" formControlName="ToDate" class="form-control" />
+
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label class="label">Consumer </label>
+                                    <input type="text" placeholder="Consumer" formControlName="Consumer" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.Consumer.errors }" />
+                                    <div *ngIf="submitted && f.Consumer.errors" class="invalid-feedback">
+                                        <div *ngIf="f.Consumer.errors.required">Consumer is required</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label class="label">Dependency </label>
+                                    <input type="text" placeholder="Dependency" formControlName="Dependency" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.Dependency.errors }" />
+                                    <div *ngIf="submitted && f.Dependency.errors" class="invalid-feedback">
+                                        <div *ngIf="f.Dependency.errors.required">Dependency is required</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label class="label">Impact of failure  </label>
+                                    <input type="text" placeholder="Impact of failure " formControlName="Impactoffailure" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.Impactoffailure.errors }" />
+                                    <div *ngIf="submitted && f.Impactoffailure.errors" class="invalid-feedback">
+                                        <div *ngIf="f.Impactoffailure.errors.required">Impact of failure is required</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label class="label">Owner Name</label>
+                                    <input type="text" placeholder="Owner Name" formControlName="OwnerName" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.OwnerName.errors }" />
+                                    <div *ngIf="submitted && f.OwnerName.errors" class="invalid-feedback">
+                                        <div *ngIf="f.OwnerName.errors.required">Owner Name is required</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label class="label">Contact Number<span class="required-field">*</span></label>
+                                    <input ondrop="return false" max="10" onpaste="return false" onkeypress='return event.charCode>=48 && event.charCode<=57' type="number" placeholder="Contact no" formControlName="contact_no" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.contact_no.errors }"
+                                    />
+                                    <div *ngIf="submitted && f.contact_no.errors" class="invalid-feedback">
+                                        <div *ngIf="f.contact_no.errors.required">Contact no is required</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label class="label">Email Id   </label>
+                                    <input type="text" placeholder="Email Id " formControlName="email_id" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.email_id.errors }" />
+                                    <div *ngIf="submitted && f.email_id.errors" class="invalid-feedback">
+                                        <div *ngIf="f.email_id.errors.required">Email id is required</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+
+
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label class="label">Reason for changing the validity </label>
+                                    <input type="text" placeholder="Reason for changing the validity" formControlName="ReasonForValidity" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.ReasonForValidity.errors }" />
+                                    <div *ngIf="submitted && f.ReasonForValidity.errors" class="invalid-feedback">
+                                        <div *ngIf="f.ReasonForValidity.errors.required">Reason for changing the validity is required</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-6" style="text-align: right;">
+                                <button type="submit" class="btn btn-default">{{BtnText}}</button>
+                            </div>
+                            <div class="col-md-6">
+                                <button type="button" class="btn btn-primary" (click)="ClearFields()">Cancel</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+    <br>
+    <!-- <div class="row">
+      <div class="col">
+          <div class="card shadow">
+              <div class="card-header bg-transparent">
+                  <h3 class="mb-0">Users</h3>
+              </div>
+              <div class="card-body">
+                  <div class="card shadow">
+                      <div class="table-responsive">
+                          <table class="table align-items-center table-flush">
+                              <thead class="thead-light">
+                                  <tr>
+                                      <th scope="col">Name</th>
+                                      <th scope="col">User</th>
+                                      <th scope="col">E-mail</th>
+                                      <th scope="col">Role</th>
+                                      <th scope="col" style="text-align: center;">Action</th>
+                                  </tr>
+                              </thead>
+                              <tbody>
+                                  <tr *ngFor="let sl of Binduserar">
+                                      <th scope="col" style="display: none;">{{sl.role_id}}</th>
+                                      <th scope="col" style="display: none;">{{sl.address}}</th>
+                                      <th scope="col" style="display: none;">{{sl.contact_no}}</th>
+                                      <th scope="col" style="display: none;">{{sl.name}}</th>
+                                      <th scope="col">{{sl.name}}</th>
+                                      <th scope="col">{{sl.username}}</th>
+                                      <th scope="col">{{sl.email_id}}</th>
+                                      <th scope="col">{{sl.type}}</th>
+                                      <td class="text-center">
+                                          <a style="cursor: pointer;" (click)="Edit(sl)">
+                                              <img src="../../../assets/img/edit.png" alt="Edit"></a> |
+                                          <a style="cursor: pointer;" (click)="deleteuser(sl)">
+                                              <img src="../../../assets/img/delete.png" alt="Remove">
+                                          </a>
+                                      </td>
+                                  </tr>
+                                  <tr *ngIf="isDataEmpty">
+                                      <td colspan="5" style="text-align: center;font-weight: bold;">No Data Found</td>
+                                  </tr>
+                              </tbody>
+                          </table>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </div> -->
+
+
+</div>

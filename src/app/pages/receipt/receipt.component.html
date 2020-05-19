@@ -1,0 +1,724 @@
+<div class="header bg-gradient-danger pb-8 pt-5 pt-md-8">
+    <div class="container-fluid">
+    </div>
+</div>
+
+<!-- Page content -->
+<div class="container-fluid mt--7">
+    <form [formGroup]="Receiptform" (ngSubmit)="onSubmit()">
+        <!-- Table -->
+        <div class="row">
+            <div class="col">
+                <div class="card shadow">
+                    <div class="card-header bg-transparent">
+                        <h3 class="mb-0">Receipt form</h3>
+                    </div>
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-md-6" style="display: none;">
+                                <div class="form-group">
+                                    <label>user id</label>
+                                    <input type="text" formControlName="receipt_id" [(ngModel)]="editid" class="form-control" />
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+
+
+                            <div class="col-md-6">
+                                <label class="label">Member Name<span class="required-field">*</span></label>
+
+                                <div class="ng-autocomplete">
+                                    <ng-autocomplete [(data)]="Bindmember" [ngModelOptions]="{standalone: true}" [(ngModel)]="editMember_Name" (change)="onChange($event.target.value)" [searchKeyword]="code" (selected)='selectEvent($event)' [itemTemplate]="itemTemplate" [notFoundTemplate]="notFoundTemplate"
+                                        required>
+                                    </ng-autocomplete>
+
+                                    <ng-template #itemTemplate let-item>
+                                        <a [innerHTML]="item.f_name"></a>
+                                    </ng-template>
+
+                                    <ng-template #notFoundTemplate let-notFound>
+                                        <div [innerHTML]="notFound"></div>
+                                    </ng-template>
+
+                                    <div ng-messages="Receiptform.editMember_Name.$error" ng-if="searchForm.editMember_Name.$touched">
+                                        <div style="font-size: small;color: #fb6340; padding-top: 1%;" *ngIf="membervalidation">Member Name is required</div>
+
+                                    </div>
+
+                                </div>
+                            </div>
+
+
+
+
+
+
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label class="label">Member id<span class="required-field">*</span></label>
+                                    <input readonly type="text" placeholder="Member id" formControlName="Member_id" class="form-control" [(ngModel)]="editMember_id" [ngClass]="{ 'is-invalid': submitted && f.Member_id.errors }" />
+                                    <div *ngIf="submitted && f.Member_id.errors" class="invalid-feedback">
+                                        <div *ngIf="f.Member_id.errors.required"> Member id is required</div>
+                                    </div>
+                                </div>
+                            </div>
+
+
+
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label class="label">Doner Name<span class="required-field">*</span></label>
+                                    <input type="text" placeholder="Doner Name" formControlName="Doner_Name" class="form-control" [(ngModel)]="editDoner_Name" [ngClass]="{ 'is-invalid': submitted && f.Doner_Name.errors }" />
+                                    <div *ngIf="submitted && f.Doner_Name.errors" class="invalid-feedback">
+                                        <div *ngIf="f.Doner_Name.errors.required"> Doner Name is required</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6" style="display: none;">
+                                <div class="form-group">
+                                    <label class="label">Doner id<span class="required-field">*</span></label>
+                                    <input type="text" [value]="0" placeholder="Doner id" formControlName="Doner_id" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.Doner_id.errors }" />
+                                    <div *ngIf="submitted && f.Doner_id.errors" class="invalid-feedback">
+                                        <div *ngIf="f.Doner_id.errors.required"> Doner id is required</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label class="label">Receipt Number<span class="required-field">*</span></label>
+                                    <input readonly type="text" placeholder="ReceiptNumber" formControlName="receipt_number" [(ngModel)]="editreceipt_number" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.receipt_number.errors }" />
+                                    <div *ngIf="submitted && f.receipt_number.errors" class="invalid-feedback">
+                                        <div *ngIf="f.receipt_number.errors.required"> Receipt Number is required</div>
+                                    </div>
+                                </div>
+                            </div>
+
+
+
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label class="label">Receipt date<span class="required-field">*</span></label>
+                                    <input type="date" formControlName="Receipt_date" class="form-control" [(ngModel)]="editReceipt_date" [ngClass]="{ 'is-invalid': submitted && f.Receipt_date.errors }" />
+                                    <div *ngIf="submitted && f.Receipt_date.errors" class="invalid-feedback">
+                                        <div *ngIf="f.Receipt_date.errors.required"> Receipt date is required</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label class="label">Tithi date<span class="required-field">*</span></label>
+                                    <input type="date" formControlName="tithi_date" class="form-control" [(ngModel)]="edittithi_date" [ngClass]="{ 'is-invalid': submitted && f.tithi_date.errors }" />
+                                    <div *ngIf="submitted && f.tithi_date.errors" class="invalid-feedback">
+                                        <div *ngIf="f.tithi_date.errors.required"> Tithi date is required</div>
+                                    </div>
+                                </div>
+                            </div>
+
+
+                        </div>
+
+                        <div class="row" style="padding-bottom: 3%;">
+
+
+
+                            <div class="col-md-6">
+
+                                <label>
+                                    <input type="checkbox" (click)="tithi()"  class="option-input checkbox" [checked]=tithidata/>
+                                    Istithi
+                                  </label>
+
+                            </div>
+
+                            <div class="col-md-6">
+                                <label>
+                                    <input type="checkbox" (click)="amount_paid1()"  class="option-input checkbox" [checked]=amount_paid/>
+                                    Amount paid
+                                  </label>
+                            </div>
+                        </div>
+
+                        <style>
+                            hr {
+                                display: block;
+                                margin-top: 0.5em;
+                                margin-bottom: 0.5em;
+                                margin-left: auto;
+                                margin-right: auto;
+                                border-style: inset;
+                                border-width: 1px;
+                            }
+                        </style>
+
+
+                        <hr>
+
+                        <label style="font-size: large; font-family: Arial, Helvetica, sans-serif;">Fund details</label>
+
+                        <hr>
+
+                        <div class="row" style="padding-top: 5%;">
+                            <div class="col-sm-2">
+                            </div>
+                            <div class="col-sm-4">
+                                <label class="label">{{funddata1}}<br>{{funddata_gujarati_1}}
+                                     </label>
+                            </div>
+                            <div class="col-sm-4">
+                                <div class="form-group">
+                                    <div class="form-group" style="display: none;">
+                                        <label>Yearly_membership_fee_id</label>
+                                        <input type="text" formControlName="Yearly_membership_fee_id" [(ngModel)]="funddata_id_1" class="form-control" />
+                                    </div>
+                                    <div class="form-group" style="display: none;">
+
+                                        <input type="text" formControlName="Yearly_membership_fee_text" [(ngModel)]="funddata1" class="form-control" />
+                                    </div>
+
+                                    <input type="number" placeholder="" formControlName="Yearly_membership_fee_amount" [(ngModel)]="edit_Yearly_membership_fee_amount" class="form-control" />
+
+                                    <!-- [(ngModel)]="edit_Yearly_membership_fee_amount" -->
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row" style="padding-top: 5%;">
+                            <div class="col-sm-2">
+                            </div>
+                            <div class="col-sm-4">
+                                <label class="label">{{funddata2}}<br>    {{funddata_gujarati_2}}
+                                     </label>
+                            </div>
+                            <div class="col-sm-4">
+                                <div class="form-group">
+                                    <div class="form-group" style="display: none;">
+                                        <label>Lifelong_membership_fee_id</label>
+                                        <input type="text" formControlName="Lifelong_membership_fee_id" [(ngModel)]="funddata_id_2" class="form-control" />
+                                    </div>
+                                    <div class="form-group" style="display: none;">
+
+                                        <input type="text" formControlName="Lifelong_membership_fee_text" [(ngModel)]="funddata2" class="form-control" />
+                                    </div>
+
+                                    <input type="number" formControlName="Lifelong_membership_fee_amount" [(ngModel)]="edit_Lifelong_membership_fee_amount" class="form-control" />
+
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row" style="padding-top: 5%;">
+                            <div class="col-sm-2">
+                            </div>
+                            <div class="col-sm-4">
+                                <label class="label">{{funddata3}}<br>    {{funddata_gujarati_3}}
+                                     </label>
+                            </div>
+                            <div class="col-sm-4">
+                                <div class="form-group">
+                                    <div class="form-group " style="display: none;">
+                                        <label>General_fund_id</label>
+                                        <input type="text" formControlName="General_fund_id" [(ngModel)]="funddata_id_3" class="form-control" />
+                                    </div>
+                                    <div class="form-group" style="display: none;">
+
+                                        <input type="text" formControlName="General_fund_text" [(ngModel)]="funddata3" class="form-control" />
+                                    </div>
+
+                                    <input type="number" formControlName="General_fund_amount" class="form-control" [(ngModel)]="edit_General_fund_amount" />
+
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row" style="padding-top: 5%;">
+                            <div class="col-sm-2">
+                            </div>
+                            <div class="col-sm-4">
+                                <label class="label">{{funddata4}}<br>    {{funddata_gujarati_4}}
+                                     </label>
+                            </div>
+                            <div class="col-sm-4">
+                                <div class="form-group">
+                                    <div class="form-group" style="display: none;">
+                                        <label>Aayambil_fund_id</label>
+                                        <input type="text" formControlName="Aayambil_fund_id" [(ngModel)]="funddata_id_4" class="form-control" />
+                                    </div>
+                                    <div class="form-group" style="display: none;">
+
+                                        <input type="text" formControlName="Aayambil_fund_text" [(ngModel)]="funddata4" class="form-control" />
+                                    </div>
+
+                                    <input type="number" formControlName="Aayambil_fund_amount" class="form-control" [(ngModel)]="edit_Aayambil_fund_amount" />
+
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row" style="padding-top: 5%;">
+                            <div class="col-sm-2">
+                            </div>
+                            <div class="col-sm-4">
+                                <label class="label">{{funddata5}}<br>    {{funddata_gujarati_5}}
+                                     </label>
+                            </div>
+                            <div class="col-sm-4">
+                                <div class="form-group">
+                                    <div class="form-group" style="display: none;">
+                                        <label>Jivdaya_fund_id</label>
+                                        <input type="text" formControlName="Jivdaya_fund_id" [(ngModel)]="funddata_id_5" class="form-control" />
+                                    </div>
+                                    <div class="form-group" style="display: none;">
+
+                                        <input type="text" formControlName="Jivdaya_fund_text" [(ngModel)]="funddata5" class="form-control" />
+                                    </div>
+
+                                    <input type="number" formControlName="Jivdaya_fund_amount" class="form-control" [(ngModel)]="edit_Jivdaya_fund_amount" />
+
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row" style="padding-top: 5%;">
+                            <div class="col-sm-2">
+                            </div>
+                            <div class="col-sm-4">
+                                <label class="label">{{funddata6}}<br>    {{funddata_gujarati_6}}
+                                     </label>
+                            </div>
+                            <div class="col-sm-4">
+                                <div class="form-group">
+                                    <div class="form-group" style="display: none;">
+                                        <label>Prabhavna_fund_id</label>
+                                        <input type="text" formControlName="Prabhavna_fund_id" [(ngModel)]="funddata_id_6" class="form-control" />
+                                    </div>
+                                    <div class="form-group" style="display: none;">
+
+                                        <input type="text" formControlName="Prabhavna_fund_text" [(ngModel)]="funddata6" class="form-control" />
+                                    </div>
+
+                                    <input type="number" formControlName="Prabhavna_fund_amount" class="form-control" [(ngModel)]="edit_Prabhavna_fund_amount" />
+
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row" style="padding-top: 5%;">
+                            <div class="col-sm-2">
+                            </div>
+                            <div class="col-sm-4">
+                                <label class="label">{{funddata7}}<br>    {{funddata_gujarati_7}}
+                                     </label>
+                            </div>
+                            <div class="col-sm-4">
+                                <div class="form-group">
+                                    <div class="form-group" style="display: none;">
+                                        <label>Sadhamik_bhakti_khatu_id</label>
+                                        <input type="text" formControlName="Sadhamik_bhakti_khatu_id" [(ngModel)]="funddata_id_7" class="form-control" />
+                                    </div>
+                                    <div class="form-group" style="display: none;">
+
+                                        <input type="text" formControlName="Sadhamik_bhakti_khatu_text" [(ngModel)]="funddata7" class="form-control" />
+                                    </div>
+
+                                    <input type="number" placeholder="" formControlName="Sadhamik_bhakti_khatu_amount" [(ngModel)]="edit_Sadhamik_bhakti_khatu_amount" class="form-control" />
+
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row" style="padding-top: 5%;">
+                            <div class="col-sm-2">
+                            </div>
+                            <div class="col-sm-4">
+                                <label class="label">{{funddata8}}<br>    {{funddata_gujarati_8}}
+                                     </label>
+                            </div>
+                            <div class="col-sm-4">
+                                <div class="form-group">
+                                    <div class="form-group" style="display: none;">
+                                        <label>Aaradhna_fund_id</label>
+                                        <input type="text" formControlName="Aaradhna_fund_id" [(ngModel)]="funddata_id_8" class="form-control" />
+                                    </div>
+                                    <div class="form-group" style="display: none;">
+
+                                        <input type="text" formControlName="Aaradhna_fund_text" [(ngModel)]="funddata8" class="form-control" />
+                                    </div>
+
+                                    <input type="number" placeholder="" formControlName="Aaradhna_fund_amount" class="form-control" [(ngModel)]="edit_Aaradhna_fund_amount" />
+
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row" style="padding-top: 5%;">
+                            <div class="col-sm-2">
+                            </div>
+                            <div class="col-sm-4">
+                                <label class="label">{{funddata9}}<br>    {{funddata_gujarati_9}}
+                                     </label>
+                            </div>
+                            <div class="col-sm-4">
+                                <div class="form-group">
+                                    <div class="form-group" style="display: none;">
+                                        <label>Sadhusadhvi_vayavachh_Fund_id</label>
+                                        <input type="text" formControlName="Sadhusadhvi_vayavachh_Fund_id" [(ngModel)]="funddata_id_9" class="form-control" />
+                                    </div>
+                                    <div class="form-group" style="display: none;">
+
+                                        <input type="text" formControlName="Sadhusadhvi_vayavachh_Fund_text" [(ngModel)]="funddata9" class="form-control" />
+                                    </div>
+
+
+                                    <input type="number" formControlName="Sadhusadhvi_vayavachh_Fund_amount" class="form-control" [(ngModel)]="edit_Sadhusadhvi_vayavachh_Fund_amount" />
+
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row" style="padding-top: 5%;">
+                            <div class="col-sm-2">
+                            </div>
+                            <div class="col-sm-4">
+                                <label class="label">{{funddata10}}<br>    {{funddata_gujarati_10}}
+                                     </label>
+                            </div>
+                            <div class="col-sm-4">
+                                <div class="form-group">
+                                    <div class="form-group" style="display: none;">
+                                        <label>Chaturmas_kaymi_aayambill_Fund_id</label>
+                                        <input type="text" formControlName="Chaturmas_kaymi_aayambill_Fund_id" [(ngModel)]="funddata_id_10" class="form-control" />
+                                    </div>
+                                    <div class="form-group" style="display: none;">
+
+                                        <input type="text" formControlName="Chaturmas_kaymi_aayambill_Fund_text" [(ngModel)]="funddata10" class="form-control" />
+                                    </div>
+
+                                    <input type="number" formControlName="Chaturmas_kaymi_aayambill_Fund_amount" class="form-control" [(ngModel)]="edit_Chaturmas_kaymi_aayambill_Fund_amount" />
+
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row" style="padding-top: 5%;">
+                            <div class="col-sm-2">
+                            </div>
+                            <div class="col-sm-4">
+                                <label class="label">{{funddata11}}<br>    {{funddata_gujarati_11}}
+                                     </label>
+                            </div>
+                            <div class="col-sm-4">
+                                <div class="form-group">
+                                    <div class="form-group" style="display: none;">
+                                        <label>Chaturmas_prathna_inami_dro_Fund_id</label>
+                                        <input type="text" formControlName="Chaturmas_prathna_inami_dro_Fund_id" [(ngModel)]="funddata_id_11" class="form-control" />
+                                    </div>
+                                    <div class="form-group" style="display: none;">
+
+                                        <input type="text" formControlName="Chaturmas_prathna_inami_dro_Fund_text" [(ngModel)]="funddata11" class="form-control" />
+                                    </div>
+
+                                    <input type="number" formControlName="Chaturmas_prathna_inami_dro_Fund_amount" class="form-control" [(ngModel)]="edit_Chaturmas_prathna_inami_dro_Fund_amount" />
+
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row" style="padding-top: 5%;">
+                            <div class="col-sm-2">
+                            </div>
+                            <div class="col-sm-4">
+                                <label class="label">{{funddata12}}<br>    {{funddata_gujarati_12}}
+                                     </label>
+                            </div>
+                            <div class="col-sm-4">
+                                <div class="form-group">
+                                    <div class="form-group" style="display: none;">
+                                        <label>Chaturmas_poshadhvrat_kaymi_tithi_Fund_id</label>
+                                        <input type="text" formControlName="Chaturmas_poshadhvrat_kaymi_tithi_Fund_id" [(ngModel)]="funddata_id_12" class="form-control" />
+                                    </div>
+                                    <div class="form-group" style="display: none;">
+
+                                        <input type="text" formControlName="Chaturmas_poshadhvrat_kaymi_tithi_Fund_text" [(ngModel)]="funddata12" class="form-control" />
+                                    </div>
+
+
+                                    <input type="number" formControlName="Chaturmas_poshadhvrat_kaymi_tithi_Fund_amount" class="form-control" [(ngModel)]="edit_Chaturmas_poshadhvrat_kaymi_tithi_Fund_amount" />
+
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row" style="padding-top: 5%;">
+                            <div class="col-sm-2">
+                            </div>
+                            <div class="col-sm-4">
+                                <label class="label">{{funddata13}}<br>    {{funddata_gujarati_13}}
+                                     </label>
+                            </div>
+                            <div class="col-sm-4">
+                                <div class="form-group">
+                                    <div class="form-group" style="display: none;">
+                                        <label>Chaturmas_sadharmik_bhaktikaymi_tithi_Fund_id</label>
+                                        <input type="text" formControlName="Chaturmas_sadharmik_bhaktikaymi_tithi_Fund_id" [(ngModel)]="funddata_id_13" class="form-control" />
+                                    </div>
+                                    <div class="form-group" style="display: none;">
+
+                                        <input type="text" formControlName="Chaturmas_sadharmik_bhaktikaymi_tithi_Fund_text" [(ngModel)]="funddata13" class="form-control" />
+                                    </div>
+
+                                    <input type="number" formControlName="Chaturmas_sadharmik_bhaktikaymi_tithi_Fund_amount" class="form-control" [(ngModel)]="edit_Chaturmas_sadharmik_bhaktikaymi_tithi_Fund_amount" />
+
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row" style="padding-top: 5%;">
+                            <div class="col-sm-2">
+                            </div>
+                            <div class="col-sm-4">
+                                <label class="label">{{funddata14}}<br>{{funddata_gujarati_14}}
+                                     </label>
+                            </div>
+                            <div class="col-sm-4">
+                                <div class="form-group">
+                                    <div class="form-group" style="display: none;">
+                                        <label>Chaturmas_kadukadiyatu_kaymi_tithi_Fund_id</label>
+                                        <input type="text" formControlName="Chaturmas_kadukadiyatu_kaymi_tithi_Fund_id" [(ngModel)]="funddata_id_14" class="form-control" />
+                                    </div>
+                                    <div class="form-group" style="display: none;">
+
+                                        <input type="text" formControlName="Chaturmas_kadukadiyatu_kaymi_tithi_Fund_text" [(ngModel)]="funddata14" class="form-control" />
+                                    </div>
+
+
+                                    <input type="number" formControlName="Chaturmas_kadukadiyatu_kaymi_tithi_Fund_amount" class="form-control" [(ngModel)]="edit_Chaturmas_kadukadiyatu_kaymi_tithi_Fund_amount" />
+
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row" style="padding-top: 5%;">
+                            <div class="col-sm-2">
+                            </div>
+                            <div class="col-sm-4">
+                                <label class="label">{{funddata15}}<br>    {{funddata_gujarati_15}}
+                                     </label>
+                            </div>
+                            <div class="col-sm-4">
+                                <div class="form-group">
+                                    <div class="form-group" style="display: none;">
+                                        <label>Samarkam_Fund_id</label>
+                                        <input type="text" formControlName="Samarkam_Fund_id" [(ngModel)]="funddata_id_15" class="form-control" />
+                                    </div>
+                                    <div class="form-group" style="display: none;">
+
+                                        <input type="text" formControlName="Samarkam_Fund_text" [(ngModel)]="funddata15" class="form-control" />
+                                    </div>
+
+                                    <input type="number" formControlName="Samarkam_Fund_amount" class="form-control" [(ngModel)]="edit_Samarkam_Fund_amount" />
+
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row" style="padding-top: 5%;">
+                            <div class="col-sm-2">
+                            </div>
+                            <div class="col-sm-4">
+                                <label class="label">{{funddata16}}<br>
+                                    {{funddata_gujarati_16}}
+                                     </label>
+                            </div>
+                            <div class="col-sm-4">
+                                <div class="form-group">
+                                    <div class="form-group" style="display: none;">
+                                        <label>Building_Fund_id</label>
+                                        <input type="text" formControlName="Building_Fund_id" [(ngModel)]="funddata_id_16" class="form-control" />
+                                    </div>
+                                    <div class="form-group" style="display: none;">
+
+                                        <input type="text" formControlName="Building_Fund_text" [(ngModel)]="funddata16" class="form-control" />
+                                    </div>
+
+                                    <input type="number" formControlName="Building_Fund_amount" class="form-control" [(ngModel)]="edit_Building_Fund_amount" />
+
+                                </div>
+                            </div>
+                        </div>
+                        <div>
+
+
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6" style="text-align: right;">
+                                <button type="submit" class="btn btn-default">{{BtnText}}</button>
+                            </div>
+                            <div class="col-md-6">
+                                <button type="button" class="btn btn-primary" (click)="ClearFields()">Cancel</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+    <br>
+
+
+
+
+
+
+
+
+
+    <div id="div_Print" style="display: none;">
+        <div class="invoice-box">
+            <table cellpadding="0" cellspacing="0">
+                <tr class="top">
+                    <td colspan="4">
+                        <table>
+                            <tr>
+                                <td class="title">
+                                    <img src="https://www.skyindya.com/wp-content/uploads/2016/09/logo.png" style="width:100%; max-width:300px;">
+                                </td>
+                                <td>
+                                    Receipt number #: {{editreceipt_number1}}<br> Created:{{editReceipt_date1}}<br>
+                                </td>
+
+
+                            </tr>
+                        </table>
+                    </td>
+                </tr>
+                <tr class="information">
+                    <td colspan="4">
+                        <table>
+                            <tr>
+                                <!-- <td>
+                                    Next Step Webs, Inc.<br> 12345 Sunny Road<br> Sunnyville, TX 12345
+                                </td> -->
+                                <td>
+                                    Doner Name<br>{{editDoner_Name1}}<br>
+                                </td>
+                            </tr>
+                        </table>
+                    </td>
+                </tr>
+                <!-- <tr class="heading">
+                    <td colspan="2">
+
+                        Payment Method
+                    </td>
+                    <td colspan="2">
+                        Check #
+                    </td>
+
+                </tr> -->
+                <!-- <tr class="details">
+                    <td colspan="2">
+                        Check
+                    </td>
+                    <td colspan="2">
+                        1000
+                    </td>
+                </tr> -->
+                <tr class="heading">
+                    <td style="width: 40%;">Fund List</td>
+                    <td style="width: 40%;">Amount</td>
+
+
+                </tr>
+
+                <tr class="item">
+                    <td style="width: 40%;">{{funddata_gujarati_1}}</td>
+
+                    <td style="width: 40%;">{{edit_Yearly_membership_fee_amount1}}</td>
+                </tr>
+
+
+                <tr class="item">
+                    <td style="width: 40%;">{{funddata_gujarati_2}}</td>
+
+                    <td style="width: 40%;">{{edit_Lifelong_membership_fee_amount1}}</td>
+                </tr>
+                <tr class="item">
+                    <td style="width: 40%;">{{funddata_gujarati_3}}</td>
+
+                    <td style="width: 40%;">{{edit_General_fund_amount1}}</td>
+                </tr>
+                <tr class="item">
+                    <td style="width: 40%;">{{funddata_gujarati_4}}</td>
+
+                    <td style="width: 40%;">{{edit_Aayambil_fund_amount1}}</td>
+                </tr>
+                <tr class="item">
+                    <td style="width: 40%;">{{funddata_gujarati_5}}</td>
+
+                    <td style="width: 40%;">{{edit_Jivdaya_fund_amount1}}</td>
+                </tr>
+                <tr class="item">
+                    <td style="width: 40%;">{{funddata_gujarati_6}}</td>
+
+                    <td style="width: 40%;">{{edit_Prabhavna_fund_amount1}}</td>
+                </tr>
+                <tr class="item">
+                    <td style="width: 40%;">{{funddata_gujarati_7}}</td>
+
+                    <td style="width: 40%;">{{edit_Aaradhna_fund_amount1}}</td>
+                </tr>
+                <tr class="item">
+                    <td style="width: 40%;">{{funddata_gujarati_8}}</td>
+
+                    <td style="width: 40%;">{{edit_Sadhusadhvi_vayavachh_Fund_amount1}}</td>
+                </tr>
+                <tr class="item">
+                    <td style="width: 40%;">{{funddata_gujarati_9}}</td>
+
+                    <td style="width: 40%;">{{edit_Chaturmas_kaymi_aayambill_Fund_amount1}}</td>
+                </tr>
+                <tr class="item">
+                    <td style="width: 40%;">{{funddata_gujarati_10}}</td>
+
+                    <td style="width: 40%;">{{edit_Chaturmas_prathna_inami_dro_Fund_amount1}}</td>
+                </tr>
+                <tr class="item">
+                    <td style="width: 40%;">{{funddata_gujarati_11}}</td>
+
+                    <td style="width: 40%;">{{edit_Chaturmas_poshadhvrat_kaymi_tithi_Fund_amount1}}</td>
+                </tr>
+                <tr class="item">
+                    <td style="width: 40%;">{{funddata_gujarati_12}}</td>
+
+                    <td style="width: 40%;">{{edit_poshadhvrat_kaymi_tithi_Fund_amount1}}</td>
+                </tr>
+                <tr class="item">
+                    <td style="width: 40%;">{{funddata_gujarati_13}}</td>
+
+                    <td style="width: 40%;">{{edit_Chaturmas_sadharmik_bhaktikaymi_tithi_Fund_amount1}}</td>
+                </tr>
+                <tr class="item">
+                    <td style="width: 40%;">{{funddata_gujarati_14}}</td>
+
+                    <td style="width: 40%;">{{edit_Chaturmas_kadukadiyatu_kaymi_tithi_Fund_amount1}}</td>
+                </tr>
+                <tr class="item">
+                    <td style="width: 40%;">{{funddata_gujarati_15}}</td>
+
+                    <td style="width: 40%;">{{edit_Samarkam_Fund_amount1}}</td>
+                </tr>
+
+                <tr class="item">
+                    <td style="width: 40%;">{{funddata_gujarati_16}}</td>
+
+                    <td style="width: 40%;">{{edit_Building_Fund_amount1}}</td>
+                </tr>
+
+
+
+                <tr class="total">
+                    <td style="width: 40%;font-weight: bold;">Total </td>
+                    <!-- <td style="width: 20%;"></td>
+                    <td style="width: 20%;"></td> -->
+                    <td style="width: 40%;font-weight: bold;">{{printtotal}}</td>
+                </tr>
+            </table>
+        </div>
+    </div>
+
+
+
+
+
+</div>

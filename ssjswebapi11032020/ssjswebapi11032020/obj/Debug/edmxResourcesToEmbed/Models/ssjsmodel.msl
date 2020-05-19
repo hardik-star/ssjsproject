@@ -1,0 +1,305 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="ssjsdataModelStoreContainer" CdmEntityContainer="ssjsdataEntities">
+    <EntitySetMapping Name="tbl_Access_Master">
+      <EntityTypeMapping TypeName="ssjsdataModel.tbl_Access_Master">
+        <MappingFragment StoreEntitySet="tbl_Access_Master">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="username" ColumnName="username" />
+          <ScalarProperty Name="password" ColumnName="password" />
+          <ScalarProperty Name="memberId" ColumnName="memberId" />
+          <ScalarProperty Name="groups" ColumnName="groups" />
+          <ScalarProperty Name="role" ColumnName="role" />
+          <ScalarProperty Name="isactive" ColumnName="isactive" />
+          <ScalarProperty Name="createddate" ColumnName="createddate" />
+          <ScalarProperty Name="createdby" ColumnName="createdby" />
+          <ScalarProperty Name="updatedby" ColumnName="updatedby" />
+          <ScalarProperty Name="updatedate" ColumnName="updatedate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="stp_saveUpdateUser" FunctionName="ssjsdataModel.Store.stp_saveUpdateUser">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="ssjsdataModel.stp_saveUpdateUser_Result">
+          <ScalarProperty Name="msg" ColumnName="msg" />
+          <ScalarProperty Name="status" ColumnName="status" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="stp_login" FunctionName="ssjsdataModel.Store.stp_login">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="ssjsdataModel.stp_login_Result">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="username" ColumnName="username" />
+          <ScalarProperty Name="groups" ColumnName="groups" />
+          <ScalarProperty Name="role" ColumnName="role" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="message" ColumnName="message" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="bindalluser" FunctionName="ssjsdataModel.Store.bindalluser">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="ssjsdataModel.bindalluser_Result">
+          <ScalarProperty Name="username" ColumnName="username" />
+          <ScalarProperty Name="groups" ColumnName="groups" />
+          <ScalarProperty Name="role" ColumnName="role" />
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="password" ColumnName="password" />
+          <ScalarProperty Name="memberId" ColumnName="memberId" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="stp_removeuser" FunctionName="ssjsdataModel.Store.stp_removeuser" />
+    <EntitySetMapping Name="tbl_Entity_Master">
+      <EntityTypeMapping TypeName="ssjsdataModel.tbl_Entity_Master">
+        <MappingFragment StoreEntitySet="tbl_Entity_Master">
+          <ScalarProperty Name="updatedate" ColumnName="updatedate" />
+          <ScalarProperty Name="updatedby" ColumnName="updatedby" />
+          <ScalarProperty Name="createdby" ColumnName="createdby" />
+          <ScalarProperty Name="createddate" ColumnName="createddate" />
+          <ScalarProperty Name="isactive" ColumnName="isactive" />
+          <ScalarProperty Name="alt_phone_no" ColumnName="alt_phone_no" />
+          <ScalarProperty Name="phone_no" ColumnName="phone_no" />
+          <ScalarProperty Name="registration_no" ColumnName="registration_no" />
+          <ScalarProperty Name="address" ColumnName="address" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="code" ColumnName="code" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="saveupdateentitydata" FunctionName="ssjsdataModel.Store.saveupdateentitydata">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="ssjsdataModel.saveupdateentitydata_Result">
+          <ScalarProperty Name="status" ColumnName="status" />
+          <ScalarProperty Name="msg" ColumnName="msg" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="stp_bind_entity_data" FunctionName="ssjsdataModel.Store.stp_bind_entity_data">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="ssjsdataModel.stp_bind_entity_data_Result">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="code" ColumnName="code" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="address" ColumnName="address" />
+          <ScalarProperty Name="registration_no" ColumnName="registration_no" />
+          <ScalarProperty Name="phone_no" ColumnName="phone_no" />
+          <ScalarProperty Name="alt_phone_no" ColumnName="alt_phone_no" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="stp_remove_entity_data" FunctionName="ssjsdataModel.Store.stp_remove_entity_data" />
+    <FunctionImportMapping FunctionImportName="saveupdatemember" FunctionName="ssjsdataModel.Store.saveupdatemember">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="ssjsdataModel.saveupdatemember_Result">
+          <ScalarProperty Name="status" ColumnName="status" />
+          <ScalarProperty Name="msg" ColumnName="msg" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="stp_bind_memberdata" FunctionName="ssjsdataModel.Store.stp_bind_memberdata">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="ssjsdataModel.stp_bind_memberdata_Result">
+          <ScalarProperty Name="code" ColumnName="code" />
+          <ScalarProperty Name="f_name" ColumnName="f_name" />
+          <ScalarProperty Name="m_name" ColumnName="m_name" />
+          <ScalarProperty Name="l_name" ColumnName="l_name" />
+          <ScalarProperty Name="dob" ColumnName="dob" />
+          <ScalarProperty Name="blood_group" ColumnName="blood_group" />
+          <ScalarProperty Name="pancard_no" ColumnName="pancard_no" />
+          <ScalarProperty Name="votingcard_no" ColumnName="votingcard_no" />
+          <ScalarProperty Name="aadharcard_no" ColumnName="aadharcard_no" />
+          <ScalarProperty Name="is_head_of_fimily" ColumnName="is_head_of_fimily" />
+          <ScalarProperty Name="HOF_id" ColumnName="HOF_id" />
+          <ScalarProperty Name="HOF_name" ColumnName="HOF_name" />
+          <ScalarProperty Name="HOF_relation" ColumnName="HOF_relation" />
+          <ScalarProperty Name="isalive" ColumnName="isalive" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="stp_removemember" FunctionName="ssjsdataModel.Store.stp_removemember" />
+    <EntitySetMapping Name="tbl_Member_Master">
+      <EntityTypeMapping TypeName="ssjsdataModel.tbl_Member_Master">
+        <MappingFragment StoreEntitySet="tbl_Member_Master">
+          <ScalarProperty Name="updatedate" ColumnName="updatedate" />
+          <ScalarProperty Name="updatedby" ColumnName="updatedby" />
+          <ScalarProperty Name="createdby" ColumnName="createdby" />
+          <ScalarProperty Name="createddate" ColumnName="createddate" />
+          <ScalarProperty Name="isactive" ColumnName="isactive" />
+          <ScalarProperty Name="isalive" ColumnName="isalive" />
+          <ScalarProperty Name="HOF_relation" ColumnName="HOF_relation" />
+          <ScalarProperty Name="HOF_name" ColumnName="HOF_name" />
+          <ScalarProperty Name="HOF_id" ColumnName="HOF_id" />
+          <ScalarProperty Name="is_head_of_fimily" ColumnName="is_head_of_fimily" />
+          <ScalarProperty Name="aadharcard_no" ColumnName="aadharcard_no" />
+          <ScalarProperty Name="votingcard_no" ColumnName="votingcard_no" />
+          <ScalarProperty Name="pancard_no" ColumnName="pancard_no" />
+          <ScalarProperty Name="blood_group" ColumnName="blood_group" />
+          <ScalarProperty Name="dob" ColumnName="dob" />
+          <ScalarProperty Name="l_name" ColumnName="l_name" />
+          <ScalarProperty Name="m_name" ColumnName="m_name" />
+          <ScalarProperty Name="f_name" ColumnName="f_name" />
+          <ScalarProperty Name="code" ColumnName="code" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="binduser_for_updatedata" FunctionName="ssjsdataModel.Store.binduser_for_updatedata">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="ssjsdataModel.binduser_for_updatedata_Result">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="username" ColumnName="username" />
+          <ScalarProperty Name="password" ColumnName="password" />
+          <ScalarProperty Name="groups" ColumnName="groups" />
+          <ScalarProperty Name="role" ColumnName="role" />
+          <ScalarProperty Name="memberId" ColumnName="memberId" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="binduser_for_Entitydata" FunctionName="ssjsdataModel.Store.binduser_for_Entitydata">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="ssjsdataModel.binduser_for_Entitydata_Result">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="code" ColumnName="code" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="address" ColumnName="address" />
+          <ScalarProperty Name="registration_no" ColumnName="registration_no" />
+          <ScalarProperty Name="phone_no" ColumnName="phone_no" />
+          <ScalarProperty Name="alt_phone_no" ColumnName="alt_phone_no" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="binduser_for_memberdata" FunctionName="ssjsdataModel.Store.binduser_for_memberdata">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="ssjsdataModel.binduser_for_memberdata_Result">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="code" ColumnName="code" />
+          <ScalarProperty Name="f_name" ColumnName="f_name" />
+          <ScalarProperty Name="m_name" ColumnName="m_name" />
+          <ScalarProperty Name="l_name" ColumnName="l_name" />
+          <ScalarProperty Name="dob" ColumnName="dob" />
+          <ScalarProperty Name="blood_group" ColumnName="blood_group" />
+          <ScalarProperty Name="pancard_no" ColumnName="pancard_no" />
+          <ScalarProperty Name="votingcard_no" ColumnName="votingcard_no" />
+          <ScalarProperty Name="aadharcard_no" ColumnName="aadharcard_no" />
+          <ScalarProperty Name="is_head_of_fimily" ColumnName="is_head_of_fimily" />
+          <ScalarProperty Name="HOF_id" ColumnName="HOF_id" />
+          <ScalarProperty Name="HOF_name" ColumnName="HOF_name" />
+          <ScalarProperty Name="HOF_relation" ColumnName="HOF_relation" />
+          <ScalarProperty Name="isalive" ColumnName="isalive" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="bind_fundtype" FunctionName="ssjsdataModel.Store.bind_fundtype">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="ssjsdataModel.bind_fundtype_Result">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="english_fund_name" ColumnName="english_fund_name" />
+          <ScalarProperty Name="gujarati_fund_name" ColumnName="gujarati_fund_name" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <EntitySetMapping Name="tbl_fund_type">
+      <EntityTypeMapping TypeName="ssjsdataModel.tbl_fund_type">
+        <MappingFragment StoreEntitySet="tbl_fund_type">
+          <ScalarProperty Name="updatedate" ColumnName="updatedate" />
+          <ScalarProperty Name="updatedby" ColumnName="updatedby" />
+          <ScalarProperty Name="createdby" ColumnName="createdby" />
+          <ScalarProperty Name="createddate" ColumnName="createddate" />
+          <ScalarProperty Name="isActive" ColumnName="isActive" />
+          <ScalarProperty Name="istithi_based" ColumnName="istithi_based" />
+          <ScalarProperty Name="gujarati_fund_name" ColumnName="gujarati_fund_name" />
+          <ScalarProperty Name="english_fund_name" ColumnName="english_fund_name" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="stp_save_transaction_data" FunctionName="ssjsdataModel.Store.stp_save_transaction_data">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="ssjsdataModel.stp_save_transaction_data_Result">
+          <ScalarProperty Name="status" ColumnName="status" />
+          <ScalarProperty Name="msg" ColumnName="msg" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="stp_bind_receipt_no" FunctionName="ssjsdataModel.Store.stp_bind_receipt_no" />
+    <FunctionImportMapping FunctionImportName="bind_transaction_master_data" FunctionName="ssjsdataModel.Store.bind_transaction_master_data">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="ssjsdataModel.bind_transaction_master_data_Result">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="receipt_no" ColumnName="receipt_no" />
+          <ScalarProperty Name="member_name" ColumnName="member_name" />
+          <ScalarProperty Name="member_id" ColumnName="member_id" />
+          <ScalarProperty Name="donor_id" ColumnName="donor_id" />
+          <ScalarProperty Name="donor_name" ColumnName="donor_name" />
+          <ScalarProperty Name="tranjection_amount" ColumnName="tranjection_amount" />
+          <ScalarProperty Name="amount_paid" ColumnName="amount_paid" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="remove_transaction" FunctionName="ssjsdataModel.Store.remove_transaction" />
+    <EntitySetMapping Name="tbl_transaction_Master">
+      <EntityTypeMapping TypeName="ssjsdataModel.tbl_transaction_Master">
+        <MappingFragment StoreEntitySet="tbl_transaction_Master">
+          <ScalarProperty Name="updatedate" ColumnName="updatedate" />
+          <ScalarProperty Name="updatedby" ColumnName="updatedby" />
+          <ScalarProperty Name="createdby" ColumnName="createdby" />
+          <ScalarProperty Name="createddate" ColumnName="createddate" />
+          <ScalarProperty Name="isactive" ColumnName="isactive" />
+          <ScalarProperty Name="amount_paid" ColumnName="amount_paid" />
+          <ScalarProperty Name="tranjection_amount" ColumnName="tranjection_amount" />
+          <ScalarProperty Name="total_transaction" ColumnName="total_transaction" />
+          <ScalarProperty Name="donor_name" ColumnName="donor_name" />
+          <ScalarProperty Name="donor_id" ColumnName="donor_id" />
+          <ScalarProperty Name="member_name" ColumnName="member_name" />
+          <ScalarProperty Name="member_id" ColumnName="member_id" />
+          <ScalarProperty Name="receptdate" ColumnName="receptdate" />
+          <ScalarProperty Name="receipt_no" ColumnName="receipt_no" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="bind_transaction_data" FunctionName="ssjsdataModel.Store.bind_transaction_data" />
+    <EntitySetMapping Name="tbl_transaction_details">
+      <EntityTypeMapping TypeName="ssjsdataModel.tbl_transaction_details">
+        <MappingFragment StoreEntitySet="tbl_transaction_details">
+          <ScalarProperty Name="updatedate" ColumnName="updatedate" />
+          <ScalarProperty Name="updatedby" ColumnName="updatedby" />
+          <ScalarProperty Name="createdby" ColumnName="createdby" />
+          <ScalarProperty Name="createddate" ColumnName="createddate" />
+          <ScalarProperty Name="isactive" ColumnName="isactive" />
+          <ScalarProperty Name="thithidate" ColumnName="thithidate" />
+          <ScalarProperty Name="istithi" ColumnName="istithi" />
+          <ScalarProperty Name="amount" ColumnName="amount" />
+          <ScalarProperty Name="fund_text" ColumnName="fund_text" />
+          <ScalarProperty Name="Fund_id" ColumnName="Fund_id" />
+          <ScalarProperty Name="TM_id" ColumnName="TM_id" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="bind_transaction_details_data" FunctionName="ssjsdataModel.Store.bind_transaction_details_data">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="ssjsdataModel.bind_transaction_details_data_Result">
+          <ScalarProperty Name="tdid" ColumnName="tdid" />
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="istithi" ColumnName="istithi" />
+          <ScalarProperty Name="thithidate" ColumnName="thithidate" />
+          <ScalarProperty Name="receipt_no" ColumnName="receipt_no" />
+          <ScalarProperty Name="receptdate" ColumnName="receptdate" />
+          <ScalarProperty Name="member_id" ColumnName="member_id" />
+          <ScalarProperty Name="member_name" ColumnName="member_name" />
+          <ScalarProperty Name="donor_id" ColumnName="donor_id" />
+          <ScalarProperty Name="donor_name" ColumnName="donor_name" />
+          <ScalarProperty Name="amount_paid" ColumnName="amount_paid" />
+          <ScalarProperty Name="Fund_id" ColumnName="Fund_id" />
+          <ScalarProperty Name="fund_text" ColumnName="fund_text" />
+          <ScalarProperty Name="amount" ColumnName="amount" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+  </EntityContainerMapping>
+</Mapping>

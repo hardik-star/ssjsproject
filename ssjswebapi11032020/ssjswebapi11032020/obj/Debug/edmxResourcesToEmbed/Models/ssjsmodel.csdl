@@ -1,0 +1,394 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="ssjsdataModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="tbl_Access_Master">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="username" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="password" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="memberId" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="groups" Type="String" MaxLength="40" FixedLength="false" Unicode="false" />
+    <Property Name="role" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="isactive" Type="Boolean" />
+    <Property Name="createddate" Type="DateTime" Precision="3" />
+    <Property Name="createdby" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="updatedby" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="updatedate" Type="DateTime" Precision="3" />
+  </EntityType>
+  <EntityContainer Name="ssjsdataEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="tbl_Access_Master" EntityType="Self.tbl_Access_Master" />
+    <FunctionImport Name="stp_saveUpdateUser" ReturnType="Collection(ssjsdataModel.stp_saveUpdateUser_Result)">
+      <Parameter Name="id" Mode="In" Type="Int32" />
+      <Parameter Name="username" Mode="In" Type="String" />
+      <Parameter Name="password" Mode="In" Type="String" />
+      <Parameter Name="memberId" Mode="In" Type="Int32" />
+      <Parameter Name="groups" Mode="In" Type="String" />
+      <Parameter Name="role" Mode="In" Type="String" />
+      <Parameter Name="sessionuser" Mode="In" Type="String" />
+      <Parameter Name="entry_type" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="stp_login" ReturnType="Collection(ssjsdataModel.stp_login_Result)">
+      <Parameter Name="username" Mode="In" Type="String" />
+      <Parameter Name="password" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="bindalluser" ReturnType="Collection(ssjsdataModel.bindalluser_Result)" />
+    <FunctionImport Name="stp_removeuser">
+      <Parameter Name="id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <EntitySet Name="tbl_Entity_Master" EntityType="ssjsdataModel.tbl_Entity_Master" />
+    <FunctionImport Name="saveupdateentitydata" ReturnType="Collection(ssjsdataModel.saveupdateentitydata_Result)">
+      <Parameter Name="id" Mode="In" Type="Int32" />
+      <Parameter Name="code" Mode="In" Type="String" />
+      <Parameter Name="name" Mode="In" Type="String" />
+      <Parameter Name="address" Mode="In" Type="String" />
+      <Parameter Name="registration_no" Mode="In" Type="String" />
+      <Parameter Name="phone_no" Mode="In" Type="String" />
+      <Parameter Name="alt_phone_no" Mode="In" Type="String" />
+      <Parameter Name="entry_type" Mode="In" Type="String" />
+      <Parameter Name="sessionuser" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="stp_bind_entity_data" ReturnType="Collection(ssjsdataModel.stp_bind_entity_data_Result)" />
+    <FunctionImport Name="stp_remove_entity_data">
+      <Parameter Name="id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="saveupdatemember" ReturnType="Collection(ssjsdataModel.saveupdatemember_Result)">
+      <Parameter Name="id" Mode="In" Type="Int32" />
+      <Parameter Name="code" Mode="In" Type="String" />
+      <Parameter Name="f_name" Mode="In" Type="String" />
+      <Parameter Name="m_name" Mode="In" Type="String" />
+      <Parameter Name="l_name" Mode="In" Type="String" />
+      <Parameter Name="dob" Mode="In" Type="String" />
+      <Parameter Name="blood_group" Mode="In" Type="String" />
+      <Parameter Name="pancard_no" Mode="In" Type="String" />
+      <Parameter Name="votingcard_no" Mode="In" Type="String" />
+      <Parameter Name="aadharcard_no" Mode="In" Type="String" />
+      <Parameter Name="is_head_of_fimily" Mode="In" Type="String" />
+      <Parameter Name="HOF_id" Mode="In" Type="String" />
+      <Parameter Name="HOF_name" Mode="In" Type="String" />
+      <Parameter Name="HOF_relation" Mode="In" Type="String" />
+      <Parameter Name="isalive" Mode="In" Type="String" />
+      <Parameter Name="entry_type" Mode="In" Type="String" />
+      <Parameter Name="sessionuser" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="stp_bind_memberdata" ReturnType="Collection(ssjsdataModel.stp_bind_memberdata_Result)" />
+    <FunctionImport Name="stp_removemember">
+      <Parameter Name="id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <EntitySet Name="tbl_Member_Master" EntityType="ssjsdataModel.tbl_Member_Master" />
+    <FunctionImport Name="binduser_for_updatedata" ReturnType="Collection(ssjsdataModel.binduser_for_updatedata_Result)">
+      <Parameter Name="id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="binduser_for_Entitydata" ReturnType="Collection(ssjsdataModel.binduser_for_Entitydata_Result)">
+      <Parameter Name="id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="binduser_for_memberdata" ReturnType="Collection(ssjsdataModel.binduser_for_memberdata_Result)">
+      <Parameter Name="id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="bind_fundtype" ReturnType="Collection(ssjsdataModel.bind_fundtype_Result)" />
+    <EntitySet Name="tbl_fund_type" EntityType="ssjsdataModel.tbl_fund_type" />
+    <FunctionImport Name="stp_save_transaction_data" ReturnType="Collection(ssjsdataModel.stp_save_transaction_data_Result)">
+      <Parameter Name="receipt_id" Mode="In" Type="Int32" />
+      <Parameter Name="receipt_number" Mode="In" Type="String" />
+      <Parameter Name="receipt_date" Mode="In" Type="String" />
+      <Parameter Name="Member_id" Mode="In" Type="Int32" />
+      <Parameter Name="Member_Name" Mode="In" Type="String" />
+      <Parameter Name="Doner_id" Mode="In" Type="Int32" />
+      <Parameter Name="Doner_Name" Mode="In" Type="String" />
+      <Parameter Name="amount_paid" Mode="In" Type="String" />
+      <Parameter Name="sessionuser" Mode="In" Type="String" />
+      <Parameter Name="Istithi" Mode="In" Type="String" />
+      <Parameter Name="tithi_date" Mode="In" Type="String" />
+      <Parameter Name="Yearly_membership_fee_id" Mode="In" Type="String" />
+      <Parameter Name="Yearly_membership_fee_amount" Mode="In" Type="Int32" />
+      <Parameter Name="Yearly_membership_fee_text" Mode="In" Type="String" />
+      <Parameter Name="Lifelong_membership_fee_id" Mode="In" Type="String" />
+      <Parameter Name="Lifelong_membership_fee_amount" Mode="In" Type="Int32" />
+      <Parameter Name="Lifelong_membership_fee_text" Mode="In" Type="String" />
+      <Parameter Name="General_fund_id" Mode="In" Type="String" />
+      <Parameter Name="General_fund_amount" Mode="In" Type="Int32" />
+      <Parameter Name="General_fund_text" Mode="In" Type="String" />
+      <Parameter Name="Aayambil_fund_id" Mode="In" Type="String" />
+      <Parameter Name="Aayambi_fund_amount" Mode="In" Type="Int32" />
+      <Parameter Name="Aayambi_fund_text" Mode="In" Type="String" />
+      <Parameter Name="Jivdaya_fund_id" Mode="In" Type="String" />
+      <Parameter Name="Jivdaya_fund_amount" Mode="In" Type="Int32" />
+      <Parameter Name="Jivdaya_fund_text" Mode="In" Type="String" />
+      <Parameter Name="Prabhavna_fund_id" Mode="In" Type="String" />
+      <Parameter Name="Prabhavna_fund_amount" Mode="In" Type="Int32" />
+      <Parameter Name="Prabhavna_fund_text" Mode="In" Type="String" />
+      <Parameter Name="Sadhamik_bhakti_khatu_id" Mode="In" Type="String" />
+      <Parameter Name="Sadhamik_bhakti_khatu_amount" Mode="In" Type="Int32" />
+      <Parameter Name="Sadhamik_bhakti_khatu_text" Mode="In" Type="String" />
+      <Parameter Name="Aaradhna_fund_id" Mode="In" Type="String" />
+      <Parameter Name="Aaradhna_fund_amount" Mode="In" Type="Int32" />
+      <Parameter Name="Aaradhna_fund_text" Mode="In" Type="String" />
+      <Parameter Name="Sadhusadhvi_vayavachh_Fund_id" Mode="In" Type="String" />
+      <Parameter Name="Sadhusadhvi_vayavachh_Fund_amount" Mode="In" Type="Int32" />
+      <Parameter Name="Sadhusadhvi_vayavachh_Fund_text" Mode="In" Type="String" />
+      <Parameter Name="Chaturmas_kaymi_aayambill_Fund_id" Mode="In" Type="String" />
+      <Parameter Name="Chaturmas_kaymi_aayambill_Fund_amount" Mode="In" Type="Int32" />
+      <Parameter Name="Chaturmas_kaymi_aayambill_Fund_text" Mode="In" Type="String" />
+      <Parameter Name="Chaturmas_prathna_inami_dro_Fund_id" Mode="In" Type="String" />
+      <Parameter Name="Chaturmas_prathna_inami_dro_Fund_amount" Mode="In" Type="Int32" />
+      <Parameter Name="Chaturmas_prathna_inami_dro_Fund_text" Mode="In" Type="String" />
+      <Parameter Name="Chaturmas_poshadhvrat_kaymi_tithi_Fund_id" Mode="In" Type="String" />
+      <Parameter Name="Chaturmas_poshadhvrat_kaymi_tithi_Fund_amount" Mode="In" Type="Int32" />
+      <Parameter Name="Chaturmas_poshadhvrat_kaymi_tithi_Fund_text" Mode="In" Type="String" />
+      <Parameter Name="Chaturmas_sadharmik_bhaktikaymi_tithi_Fund_id" Mode="In" Type="String" />
+      <Parameter Name="Chaturmas_sadharmik_bhaktikaymi_tithi_Fund_amount" Mode="In" Type="Int32" />
+      <Parameter Name="Chaturmas_sadharmik_bhaktikaymi_tithi_Fund_text" Mode="In" Type="String" />
+      <Parameter Name="Chaturmas_kadukadiyatu_kaymi_tithi_Fund_id" Mode="In" Type="String" />
+      <Parameter Name="Chaturmas_kadukadiyatu_kaymi_tithi_Fund_amount" Mode="In" Type="Int32" />
+      <Parameter Name="Chaturmas_kadukadiyatu_kaymi_tithi_Fund_text" Mode="In" Type="String" />
+      <Parameter Name="Samarkam_Fund_id" Mode="In" Type="String" />
+      <Parameter Name="Samarkam_Fund_amount" Mode="In" Type="Int32" />
+      <Parameter Name="Samarkam_Fund_text" Mode="In" Type="String" />
+      <Parameter Name="Building_Fund_id" Mode="In" Type="String" />
+      <Parameter Name="Building_Fund_amount" Mode="In" Type="Int32" />
+      <Parameter Name="Building_Fund_text" Mode="In" Type="String" />
+      <Parameter Name="entry_type" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="bind_tranjection_data" ReturnType="Collection(ssjsdataModel.bind_tranjection_data_Result)" />
+    <FunctionImport Name="stp_bind_receipt_no" ReturnType="Collection(Int32)" />
+    <FunctionImport Name="bind_transaction_master_data" ReturnType="Collection(ssjsdataModel.bind_transaction_master_data_Result)" />
+    <FunctionImport Name="remove_transaction">
+      <Parameter Name="id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <EntitySet Name="tbl_transaction_Master" EntityType="ssjsdataModel.tbl_transaction_Master" />
+    <FunctionImport Name="bind_transaction_data" />
+    <EntitySet Name="tbl_transaction_details" EntityType="ssjsdataModel.tbl_transaction_details" />
+    <FunctionImport Name="bind_transaction_details_data" ReturnType="Collection(ssjsdataModel.bind_transaction_details_data_Result)" />
+  </EntityContainer>
+  <ComplexType Name="stp_saveUpdateUser_Result">
+    <Property Type="String" Name="msg" Nullable="false" MaxLength="19" />
+    <Property Type="String" Name="status" Nullable="false" MaxLength="1" />
+  </ComplexType>
+  <ComplexType Name="stp_login_Result">
+    <Property Type="Int32" Name="id" Nullable="false" />
+    <Property Type="String" Name="username" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="groups" Nullable="true" MaxLength="40" />
+    <Property Type="String" Name="role" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="Status" Nullable="false" MaxLength="3" />
+    <Property Type="String" Name="message" Nullable="false" MaxLength="7" />
+  </ComplexType>
+  <ComplexType Name="bindalluser_Result">
+    <Property Type="String" Name="username" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="groups" Nullable="true" MaxLength="40" />
+    <Property Type="String" Name="role" Nullable="true" MaxLength="50" />
+    <Property Type="Int32" Name="id" Nullable="false" />
+    <Property Type="String" Name="password" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="memberId" Nullable="true" MaxLength="50" />
+  </ComplexType>
+  <EntityType Name="tbl_Entity_Master">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="code" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="address" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="registration_no" Type="Int32" />
+    <Property Name="phone_no" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="alt_phone_no" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="isactive" Type="Boolean" />
+    <Property Name="createddate" Type="DateTime" Precision="3" />
+    <Property Name="createdby" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="updatedby" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="updatedate" Type="DateTime" Precision="3" />
+  </EntityType>
+  <ComplexType Name="saveupdateentitydata_Result">
+    <Property Type="String" Name="status" Nullable="false" MaxLength="1" />
+    <Property Type="String" Name="msg" Nullable="false" MaxLength="23" />
+  </ComplexType>
+  <ComplexType Name="stp_bind_entity_data_Result">
+    <Property Type="Int32" Name="id" Nullable="false" />
+    <Property Type="String" Name="code" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="name" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="address" Nullable="true" MaxLength="50" />
+    <Property Type="Int32" Name="registration_no" Nullable="true" />
+    <Property Type="String" Name="phone_no" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="alt_phone_no" Nullable="true" MaxLength="50" />
+  </ComplexType>
+  <ComplexType Name="saveupdatemember_Result">
+    <Property Type="String" Name="status" Nullable="false" MaxLength="1" />
+    <Property Type="String" Name="msg" Nullable="false" MaxLength="21" />
+  </ComplexType>
+  <ComplexType Name="stp_bind_memberdata_Result">
+    <Property Type="String" Name="code" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="f_name" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="m_name" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="l_name" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="dob" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="blood_group" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="pancard_no" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="votingcard_no" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="aadharcard_no" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="is_head_of_fimily" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="HOF_id" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="HOF_name" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="HOF_relation" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="isalive" Nullable="true" MaxLength="50" />
+    <Property Type="Int32" Name="id" Nullable="false" />
+  </ComplexType>
+  <EntityType Name="tbl_Member_Master">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="code" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="f_name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="m_name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="l_name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="dob" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="blood_group" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="pancard_no" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="votingcard_no" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="aadharcard_no" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="is_head_of_fimily" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="HOF_id" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="HOF_name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="HOF_relation" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="isalive" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="isactive" Type="Boolean" />
+    <Property Name="createddate" Type="DateTime" Precision="3" />
+    <Property Name="createdby" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="updatedby" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="updatedate" Type="DateTime" Precision="3" />
+  </EntityType>
+  <ComplexType Name="binduser_for_updatedata_Result">
+    <Property Type="Int32" Name="id" Nullable="false" />
+    <Property Type="String" Name="username" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="password" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="groups" Nullable="true" MaxLength="40" />
+    <Property Type="String" Name="role" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="memberId" Nullable="true" MaxLength="50" />
+  </ComplexType>
+  <ComplexType Name="binduser_for_Entitydata_Result">
+    <Property Type="Int32" Name="id" Nullable="false" />
+    <Property Type="String" Name="code" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="name" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="address" Nullable="true" MaxLength="50" />
+    <Property Type="Int32" Name="registration_no" Nullable="true" />
+    <Property Type="String" Name="phone_no" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="alt_phone_no" Nullable="true" MaxLength="50" />
+  </ComplexType>
+  <ComplexType Name="binduser_for_memberdata_Result">
+    <Property Type="Int32" Name="id" Nullable="false" />
+    <Property Type="String" Name="code" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="f_name" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="m_name" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="l_name" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="dob" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="blood_group" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="pancard_no" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="votingcard_no" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="aadharcard_no" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="is_head_of_fimily" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="HOF_id" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="HOF_name" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="HOF_relation" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="isalive" Nullable="true" MaxLength="50" />
+  </ComplexType>
+  <ComplexType Name="bind_fundtype_Result">
+    <Property Type="Int32" Name="id" Nullable="false" />
+    <Property Type="String" Name="english_fund_name" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="gujarati_fund_name" Nullable="true" />
+  </ComplexType>
+  <EntityType Name="tbl_fund_type">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="english_fund_name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="gujarati_fund_name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="istithi_based" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="isActive" Type="Boolean" />
+    <Property Name="createddate" Type="DateTime" Precision="3" />
+    <Property Name="createdby" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="updatedby" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="updatedate" Type="DateTime" Precision="3" />
+  </EntityType>
+  <ComplexType Name="bind_tranjection_data_Result">
+    <Property Type="Int32" Name="id" Nullable="false" />
+    <Property Type="String" Name="receipt_no" Nullable="true" MaxLength="50" />
+    <Property Type="DateTime" Name="receptdate" Nullable="true" />
+    <Property Type="Int32" Name="member_id" Nullable="true" />
+    <Property Type="String" Name="member_name" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="donor_id" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="donor_name" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="amount_paid" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="Fund_id" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="fund_text" Nullable="true" MaxLength="50" />
+    <Property Type="Int32" Name="amount" Nullable="true" />
+    <Property Type="String" Name="istithi" Nullable="true" MaxLength="50" />
+    <Property Type="DateTime" Name="thithidate" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="bind_transaction_master_data_Result">
+    <Property Type="Int32" Name="id" Nullable="false" />
+    <Property Type="String" Name="receipt_no" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="member_name" Nullable="true" MaxLength="50" />
+    <Property Type="Int32" Name="member_id" Nullable="true" />
+    <Property Type="String" Name="donor_id" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="donor_name" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="tranjection_amount" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="amount_paid" Nullable="true" MaxLength="50" />
+  </ComplexType>
+  <EntityType Name="tbl_transaction_Master">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="receipt_no" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="receptdate" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="member_id" Type="Int32" />
+    <Property Name="member_name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="donor_id" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="donor_name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="total_transaction" Type="Int32" />
+    <Property Name="tranjection_amount" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="amount_paid" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="isactive" Type="Boolean" />
+    <Property Name="createddate" Type="DateTime" Precision="3" />
+    <Property Name="createdby" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="updatedby" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="updatedate" Type="DateTime" Precision="3" />
+  </EntityType>
+  <EntityType Name="tbl_transaction_details">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="TM_id" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Fund_id" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="fund_text" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="amount" Type="Int32" />
+    <Property Name="istithi" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="thithidate" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="isactive" Type="Boolean" />
+    <Property Name="createddate" Type="DateTime" Precision="3" />
+    <Property Name="createdby" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="updatedby" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="updatedate" Type="DateTime" Precision="3" />
+  </EntityType>
+  <ComplexType Name="bind_transaction_details_data_Result">
+    <Property Type="Int32" Name="tdid" Nullable="false" />
+    <Property Type="Int32" Name="id" Nullable="false" />
+    <Property Type="String" Name="istithi" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="thithidate" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="receipt_no" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="receptdate" Nullable="true" MaxLength="50" />
+    <Property Type="Int32" Name="member_id" Nullable="true" />
+    <Property Type="String" Name="member_name" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="donor_id" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="donor_name" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="amount_paid" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="Fund_id" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="fund_text" Nullable="true" MaxLength="50" />
+    <Property Type="Int32" Name="amount" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="stp_save_transaction_data_Result">
+    <Property Type="String" Name="status" Nullable="false" MaxLength="1" />
+    <Property Type="String" Name="msg" Nullable="false" MaxLength="16" />
+  </ComplexType>
+</Schema>

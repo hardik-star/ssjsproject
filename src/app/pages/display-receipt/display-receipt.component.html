@@ -1,0 +1,224 @@
+<div class="header bg-gradient-danger pb-8 pt-5 pt-md-8">
+    <div class="container-fluid">
+    </div>
+</div>
+<!-- Page content -->
+<div class="container-fluid mt--7">
+    <div class="row">
+        <div class="col">
+            <div class="card shadow">
+                <div class="row" style="padding-top: 3%;padding-left: 3%;padding-right: 3%;">
+
+
+                    <div class="col-md-6">
+                        <h3 class="mb-0">Transaction</h3>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="search-hero">
+                            <input class="form-control" type="text" name="search" [(ngModel)]="searchText" autocomplete="off" placeholder="&#61442;  Start searching ">
+                        </div>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <div class="card shadow">
+                        <div class="table-responsive">
+                            <table class="table align-items-center table-flush">
+                                <thead class="thead-light">
+                                    <tr>
+                                        <th scope="col">receipt no</th>
+                                        <th scope="col">member name</th>
+                                        <th scope="col">donor name</th>
+                                        <th scope="col">tranjection amount</th>
+
+                                        <th scope="col" style="text-align: center;">Action</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr *ngFor="let sl of bindtranjection_master | filter:searchText">
+
+                                        <th scope="col">{{sl.receipt_no}}</th>
+                                        <th scope="col">{{sl.member_name}}</th>
+                                        <th scope="col">{{sl.donor_name}}</th>
+                                        <th scope="col">{{sl.tranjection_amount}}</th>
+
+                                        <td class="text-center">
+                                            <a style="cursor: pointer;" (click)="Edit(sl)">
+                                                <img src="../../../assets/img/edit.png" alt="Edit"></a> |
+                                            <a style="cursor: pointer;" (click)="deleteuser(sl)">
+                                                <img src="../../../assets/img/delete.png" alt="Remove">
+                                            </a>|
+                                            <a style="cursor: pointer;" (click)="printDiv(); printdata(sl)">
+                                                <img src="../../../assets/img/pri.png" alt="Remove">
+                                            </a>
+                                        </td>
+                                    </tr>
+                                    <tr *ngIf="isDataEmpty">
+                                        <td colspan="5" style="text-align: center;font-weight: bold;">No Data Found</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div id="div_Print" style="display: none;">
+        <div class="invoice-box">
+            <table cellpadding="0" cellspacing="0">
+                <tr class="top">
+                    <td colspan="4">
+                        <table>
+                            <tr>
+                                <td class="title">
+                                    <img src="https://www.skyindya.com/wp-content/uploads/2016/09/logo.png" style="width:100%; max-width:300px;">
+                                </td>
+                                <td>
+                                    Receipt number #: {{editreceipt_number1}}<br> Created:{{editReceipt_date1}}<br>
+                                </td>
+                            </tr>
+                        </table>
+                    </td>
+                </tr>
+                <tr class="information">
+                    <td colspan="4">
+                        <table>
+                            <tr>
+                                <!-- <td>
+                                  Next Step Webs, Inc.<br> 12345 Sunny Road<br> Sunnyville, TX 12345
+                              </td> -->
+                                <td>
+                                    Doner Name<br>{{editDoner_Name1}}<br>
+                                </td>
+                            </tr>
+                        </table>
+                    </td>
+                </tr>
+                <!-- <tr class="heading">
+                  <td colspan="2">
+
+                      Payment Method
+                  </td>
+                  <td colspan="2">
+                      Check #
+                  </td>
+
+              </tr> -->
+                <!-- <tr class="details">
+                  <td colspan="2">
+                      Check
+                  </td>
+                  <td colspan="2">
+                      1000
+                  </td>
+              </tr> -->
+                <tr class="heading">
+                    <td style="width: 40%;">Fund List</td>
+                    <td style="width: 40%;">Amount</td>
+
+
+                </tr>
+
+                <tr class="item">
+                    <td style="width: 40%;">{{funddata_gujarati_1}}</td>
+
+                    <td style="width: 40%;">{{edit_Yearly_membership_fee_amount1}}</td>
+                </tr>
+
+
+                <tr class="item">
+                    <td style="width: 40%;">{{funddata_gujarati_2}}</td>
+
+                    <td style="width: 40%;">{{edit_Lifelong_membership_fee_amount1}}</td>
+                </tr>
+                <tr class="item">
+                    <td style="width: 40%;">{{funddata_gujarati_3}}</td>
+
+                    <td style="width: 40%;">{{edit_General_fund_amount1}}</td>
+                </tr>
+                <tr class="item">
+                    <td style="width: 40%;">{{funddata_gujarati_4}}</td>
+
+                    <td style="width: 40%;">{{edit_Aayambil_fund_amount1}}</td>
+                </tr>
+                <tr class="item">
+                    <td style="width: 40%;">{{funddata_gujarati_5}}</td>
+
+                    <td style="width: 40%;">{{edit_Jivdaya_fund_amount1}}</td>
+                </tr>
+                <tr class="item">
+                    <td style="width: 40%;">{{funddata_gujarati_6}}</td>
+
+                    <td style="width: 40%;">{{edit_Prabhavna_fund_amount1}}</td>
+                </tr>
+                <tr class="item">
+                    <td style="width: 40%;">{{funddata_gujarati_7}}</td>
+
+                    <td style="width: 40%;">{{edit_Aaradhna_fund_amount1}}</td>
+                </tr>
+                <tr class="item">
+                    <td style="width: 40%;">{{funddata_gujarati_8}}</td>
+
+                    <td style="width: 40%;">{{edit_Sadhusadhvi_vayavachh_Fund_amount1}}</td>
+                </tr>
+                <tr class="item">
+                    <td style="width: 40%;">{{funddata_gujarati_9}}</td>
+
+                    <td style="width: 40%;">{{edit_Chaturmas_kaymi_aayambill_Fund_amount1}}</td>
+                </tr>
+                <tr class="item">
+                    <td style="width: 40%;">{{funddata_gujarati_10}}</td>
+
+                    <td style="width: 40%;">{{edit_Chaturmas_prathna_inami_dro_Fund_amount1}}</td>
+                </tr>
+                <tr class="item">
+                    <td style="width: 40%;">{{funddata_gujarati_11}}</td>
+
+                    <td style="width: 40%;">{{edit_Chaturmas_poshadhvrat_kaymi_tithi_Fund_amount1}}</td>
+                </tr>
+                <tr class="item">
+                    <td style="width: 40%;">{{funddata_gujarati_12}}</td>
+
+                    <td style="width: 40%;">{{edit_poshadhvrat_kaymi_tithi_Fund_amount1}}</td>
+                </tr>
+                <tr class="item">
+                    <td style="width: 40%;">{{funddata_gujarati_13}}</td>
+
+                    <td style="width: 40%;">{{edit_Chaturmas_sadharmik_bhaktikaymi_tithi_Fund_amount1}}</td>
+                </tr>
+                <tr class="item">
+                    <td style="width: 40%;">{{funddata_gujarati_14}}</td>
+
+                    <td style="width: 40%;">{{edit_Chaturmas_kadukadiyatu_kaymi_tithi_Fund_amount1}}</td>
+                </tr>
+                <tr class="item">
+                    <td style="width: 40%;">{{funddata_gujarati_15}}</td>
+
+                    <td style="width: 40%;">{{edit_Samarkam_Fund_amount1}}</td>
+                </tr>
+
+                <tr class="item">
+                    <td style="width: 40%;">{{funddata_gujarati_16}}</td>
+
+                    <td style="width: 40%;">{{edit_Building_Fund_amount1}}</td>
+                </tr>
+
+
+
+                <tr class="total">
+                    <td style="width: 40%;font-weight: bold;">Total </td>
+                    <!-- <td style="width: 20%;"></td>
+                  <td style="width: 20%;"></td>  -->
+                    <td style="width: 20%;font-weight: bold;">{{printtotal}}</td>
+                </tr>
+            </table>
+        </div>
+    </div>
+
+
+
+
+
+</div>
